@@ -2,10 +2,6 @@
 
 
 #(year / 4 OR year /400)
-
-# Create array for leap years
-leap_year = []
-
 # Ask a questions from argument
 def ask(question)
     puts question
@@ -15,24 +11,24 @@ end
 
 # Leap year
 def leap_year (starting_year, ending_year)
+    # Create array for leap years
+    leap_year = []
+
     for year in starting_year..ending_year do
-        puts "The current year is #{year}"
-        if year % 4 == 0 
-            puts "4"
-        elsif year % 100 == 1 
-            puts "100"
+        if year % 4 == 0 && year % 100 != 0
+            leap_year.push(year)
         elsif year % 400 == 0 
-            puts "400"
+            leap_year.push(year)
         end
     end
+    
+    return leap_year
 end
+
 
 
 # Main program 
 starting_year = ask("Give me a starting year: ")
 ending_year = ask("Give me a ending year: ")
 
-puts starting_year.class
-puts ending_year.class
-
-leap_year(starting_year, ending_year)
+puts leap_year(starting_year, ending_year)
